@@ -1,10 +1,10 @@
-export interface createAccount {
+export interface CreateAccount {
     email: string;
     password: string;
     name: string;
 }
 
-export interface emailLogin {
+export interface EmailLogin {
     email: string;
     password: string;
 }

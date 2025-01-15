@@ -1,6 +1,6 @@
 import conf from "../conf/conf.ts";
 import { Client, Account, ID } from "appwrite";
-import {createAccount, emailLogin} from "../../types/auth-service-types.ts";
+import {CreateAccount, EmailLogin} from "../../types/auth-service-types.ts";
 
 export class AuthService {
     client: Client = new Client();
@@ -13,7 +13,7 @@ export class AuthService {
         this.account = new Account(this.client);
     }
 
-    async createAccount({ email, password, name }: createAccount): Promise<unknown> {
+    async createAccount({ email, password, name }: CreateAccount): Promise<unknown> {
         try {
             const userAccount = await this.account.create(
                 ID.unique(),
@@ -31,7 +31,7 @@ export class AuthService {
         }
     }
 
-    async login({ email, password }: emailLogin): Promise<unknown> {
+    async login({ email, password }: EmailLogin): Promise<unknown> {
         try {
             return await this.account.createEmailPasswordSession(email, password);
         } catch (error) {
