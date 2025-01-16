@@ -40,7 +40,7 @@ export class AuthService {
         }
     }
 
-    async getCurrentUser() {
+    async getCurrentUser(): Promise<unknown> {
         try {
             return await this.account.get();
         } catch (error) {
@@ -49,7 +49,7 @@ export class AuthService {
         return null;
     }
 
-    async logout() {
+    async logout(): Promise<void> {
         try {
             await this.account.deleteSessions();
         } catch (error) {
@@ -58,6 +58,6 @@ export class AuthService {
     }
 }
 
-const authService = new AuthService();
+const authService: AuthService = new AuthService();
 
 export default authService;
