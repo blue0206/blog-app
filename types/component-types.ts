@@ -1,4 +1,4 @@
-import { ReactNode, RefObject } from "react";
+import { InputHTMLAttributes, ReactNode, RefCallback, SelectHTMLAttributes } from "react";
 
 // Header Component
 interface NavItem {
@@ -19,20 +19,20 @@ export interface ButtonParameters {
 }
 
 // Input Component
-export interface InputParameters {
+export interface InputParameters extends InputHTMLAttributes<HTMLInputElement> {
     label?: string;
     type?: string;
     className?: string;
-    ref: RefObject<HTMLInputElement>;
+    ref: RefCallback<HTMLInputElement>;
 }
 
 // Select Component
-export interface SelectParameters {
+export interface SelectParameters extends SelectHTMLAttributes<HTMLSelectElement> {
     options: string[];
     selectedValue?: string;
     className?: string;
     label?: string;
-    ref: RefObject<HTMLSelectElement>;
+    ref: RefCallback<HTMLSelectElement>;
 }
 
 // Post Card Component
