@@ -25,3 +25,12 @@ export interface InputParameters {
     className?: string;
     ref: RefObject<HTMLInputElement>;
 }
+
+// Select Component
+export interface SelectParameters {
+    options: string[];
+    selectedValue?: string;
+    className?: string;
+    label?: string;
+    ref: RefObject<HTMLSelectElement>;
+}
