@@ -34,3 +34,10 @@ export interface SelectParameters {
     label?: string;
     ref: RefObject<HTMLSelectElement>;
 }
+
+// Post Card Component
+export interface PostCardProps {
+    $id: string;
+    title: string;
+    featuredImage: string;
+}
