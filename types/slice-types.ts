@@ -5,6 +5,10 @@ export type AuthState = {
     userData: object | null;
 }
 
+export type State = {
+    auth: AuthState;
+}
+
 export type AuthAction = {
     payload: UserData;
 }
