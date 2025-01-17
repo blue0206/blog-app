@@ -41,3 +41,9 @@ export interface PostCardProps {
     title: string;
     featuredImage: string;
 }
+
+// Auth Layout (Protected) Component
+export interface AuthLayoutParameters {
+    children: ReactNode;
+    authentication?: boolean;
+}
