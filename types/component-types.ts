@@ -1,4 +1,5 @@
 import { InputHTMLAttributes, ReactNode, RefCallback, SelectHTMLAttributes } from "react";
+import { Control } from "react-hook-form";
 
 // Header Component
 interface NavItem {
@@ -46,4 +47,12 @@ export interface PostCardProps {
 export interface AuthLayoutParameters {
     children: ReactNode;
     authentication?: boolean;
+}
+
+// RTE Component
+export interface RTEParameters {
+    name: string;
+    control: Control;
+    label: string;
+    defaultValue: string;
 }
