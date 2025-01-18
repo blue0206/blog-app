@@ -1,5 +1,5 @@
 import conf from "../conf/conf.ts"
-import { Client, ID, Databases, Storage, Query } from "appwrite";
+import { Client, ID, Databases, Storage, Query, Models } from "appwrite";
 import { Post, CreatePost } from "../../types/post.ts";
 
 export class Service {
@@ -15,7 +15,7 @@ export class Service {
         this.bucket = new Storage(this.client);
     }
 
-    async createPost({title, slug, content, featuredImage, status, userId}: CreatePost): Promise<unknown> {
+    async createPost({title, slug, content, featuredImage, status, userId}: CreatePost): Promise<Models.Document> {
         try {
             return await this.databases.createDocument(
                 conf.appwriteDatabaseId,
@@ -35,7 +35,7 @@ export class Service {
         }
     }
 
-    async updatePost(slug: string, {title, content, featuredImage, status, userId}: Post): Promise<unknown> {
+    async updatePost(slug: string, {title, content, featuredImage, status, userId}: Post): Promise<Models.Document> {
         try {
             return await this.databases.updateDocument(
                 conf.appwriteDatabaseId,
@@ -69,7 +69,7 @@ export class Service {
         }
     }
 
-    async getPost(slug: string): Promise<object | boolean> {
+    async getPost(slug: string): Promise<Models.Document> {
         try {
             return await this.databases.getDocument(
                 conf.appwriteDatabaseId,
@@ -78,11 +78,11 @@ export class Service {
             );
         } catch (error) {
             console.log("Appwrite Service :: Get Post :: Error", error);
-            return false;
+            throw error;
         }
     }
 
-    async getPosts(): Promise<unknown> {
+    async getPosts(): Promise<Models.DocumentList<Models.Document>> {
         try {
             return await this.databases.listDocuments(
                 conf.appwriteDatabaseId,
@@ -93,12 +93,12 @@ export class Service {
             );
         } catch (error) {
             console.log("Appwrite Service :: Get Posts :: Error:", error);
-            return false;
+            throw error;
         }
     }
 
     // file services
-    async uploadFile(file: File): Promise<object | boolean> {
+    async uploadFile(file: File): Promise<Models.File> {
         try {
             return await this.bucket.createFile(
                 conf.appwriteBucketId,
@@ -107,7 +107,7 @@ export class Service {
             );
         } catch (error) {
             console.log("Appwrite Service :: Upload File :: Error", error);
-            return false;
+            throw error;
         }
     }
 
