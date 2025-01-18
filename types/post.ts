@@ -1,11 +1,13 @@
-export interface Post {
+import { Models } from "appwrite";
+
+export interface Post extends Models.Document {
     title: string;
     content: string;
     featuredImage: string;
     status: string;
-    userId: string;
 }
 
 export interface CreatePost extends Post {
     slug: string;
+    userId: string;
 }
