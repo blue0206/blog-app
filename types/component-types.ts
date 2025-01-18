@@ -1,5 +1,5 @@
 import { InputHTMLAttributes, ReactNode, RefCallback, SelectHTMLAttributes } from "react";
-import { CreatePost } from "./post";
+import { Post } from "./post";
 import { Control } from "react-hook-form";
 
 // Header Component
@@ -53,12 +53,15 @@ export interface AuthLayoutParameters {
 // RTE Component
 export interface RTEParameters {
     name: string;
-    control: Control;
+    control: Control<PostParameter>;
     label: string;
     defaultValue: string;
 }
 
 // Post Form Component
-export interface PostFormParameters {
-    post?: CreatePost
+export type PostParameter = Post & {
+    slug: string;
+}
+export interface PostFormParameters  {
+    post?: PostParameter
 }
