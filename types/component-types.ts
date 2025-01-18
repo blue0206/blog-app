@@ -1,4 +1,5 @@
 import { InputHTMLAttributes, ReactNode, RefCallback, SelectHTMLAttributes } from "react";
+import { CreatePost } from "./post";
 import { Control } from "react-hook-form";
 
 // Header Component
@@ -55,4 +56,9 @@ export interface RTEParameters {
     control: Control;
     label: string;
     defaultValue: string;
+}
+
+// Post Form Component
+export interface PostFormParameters {
+    post?: CreatePost
 }
